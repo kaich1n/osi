@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 
-static const char CONFIG_FILE[] = "/data/local/tmp/config_test.conf";
+static const char CONFIG_FILE[] = "/tmp/config_test.conf";
 static const char CONFIG_FILE_CONTENT[] =
 "                                                                                    \n\
 first_key=value                                                                      \n\
@@ -59,7 +59,7 @@ int test_config_new_empty(void) {
 }
 
 int test_config_new_no_file(void) {
-    config_t *config = config_new("/meow");
+    config_t *config = config_new("/tmp/meow");
     if (config) { config_free(config); return 0; }
     config_free(config);
     return 1;
@@ -92,7 +92,7 @@ int test_config_has_key_in_default_section(void) {
     config_t *config = config_new(CONFIG_FILE);
     if (!config) return 0;
     if (!config_has_key(config, CONFIG_DEFAULT_SECTION, "first_key")) { config_free(config); return 0; }
-    if (strcmp(config_get_string(config, CONFIG_DEFAULT_SECTION, "first_key", "meow"), "value") != 0) { config_free(config); return 0; }
+    if (strcmp(config_get_string(config, CONFIG_DEFAULT_SECTION, "first_key", "/tmp/meow"), "value") != 0) { config_free(config); return 0; }
     config_free(config);
     return 1;
 }
