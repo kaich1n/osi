@@ -41,7 +41,7 @@ include_directories(include)
 ADD_LIBRARY(ct SHARED ${SOURCES})
 target_link_libraries(ct PRIVATE Threads::Threads rt)
 
-FILE(GLOB headers *.h)
+FILE(GLOB headers include/*.h)
 LIST(FILTER headers EXCLUDE REGEX "-priv.h$" )
 INSTALL(FILES ${headers}
 	DESTINATION include/ct
