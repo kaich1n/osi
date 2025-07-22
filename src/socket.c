@@ -16,9 +16,9 @@
  *
  ******************************************************************************/
 
-#define LOG_TAG "bt_osi_socket"
+#define LOG_TAG "osi_socket"
 
-#include "osi/include/socket.h"
+#include "socket.h"
 
 #include <asm/ioctls.h>
 #include <assert.h>
@@ -29,10 +29,10 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
-#include "osi/include/allocator.h"
-#include "osi/include/log.h"
-#include "osi/include/osi.h"
-#include "osi/include/reactor.h"
+#include "allocator.h"
+#include "log.h"
+#include "osi.h"
+#include "reactor.h"
 
 // The IPv4 loopback address: 127.0.0.1
 static const in_addr_t LOCALHOST_ = 0x7f000001;

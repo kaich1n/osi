@@ -18,10 +18,10 @@
 
 #include <assert.h>
 
-#include "osi/include/allocator.h"
-#include "osi/include/hash_map.h"
-#include "osi/include/list.h"
-#include "osi/include/osi.h"
+#include "allocator.h"
+#include "hash_map.h"
+#include "list.h"
+#include "osi.h"
 
 struct hash_map_t;
 

@@ -16,9 +16,9 @@
  *
  ******************************************************************************/
 
-#define LOG_TAG "bt_osi_eager_reader"
+#define LOG_TAG "osi_eager_reader"
 
-#include "osi/include/eager_reader.h"
+#include "eager_reader.h"
 
 #include <assert.h>
 #include <errno.h>
@@ -26,10 +26,10 @@
 #include <sys/eventfd.h>
 #include <unistd.h>
 
-#include "osi/include/fixed_queue.h"
-#include "osi/include/log.h"
-#include "osi/include/osi.h"
-#include "osi/include/reactor.h"
+#include "fixed_queue.h"
+#include "log.h"
+#include "osi.h"
+#include "reactor.h"
 
 #if !defined(EFD_SEMAPHORE)
 #  define EFD_SEMAPHORE (1 << 0)

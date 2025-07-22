@@ -16,9 +16,9 @@
  *
  ******************************************************************************/
 
-#define LOG_TAG "bt_osi_reactor"
+#define LOG_TAG "osi_reactor"
 
-#include "osi/include/reactor.h"
+#include "reactor.h"
 
 #include <assert.h>
 #include <errno.h>
@@ -29,9 +29,9 @@
 #include <sys/eventfd.h>
 #include <unistd.h>
 
-#include "osi/include/allocator.h"
-#include "osi/include/list.h"
-#include "osi/include/log.h"
+#include "allocator.h"
+#include "list.h"
+#include "log.h"
 
 #if !defined(EFD_SEMAPHORE)
 #  define EFD_SEMAPHORE (1 << 0)

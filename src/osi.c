@@ -26,8 +26,8 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-#include "osi/include/log.h"
-#include "osi/include/osi.h"
+#include "log.h"
+#include "osi.h"
 
 #define RANDOM_PATH "/dev/urandom"
 

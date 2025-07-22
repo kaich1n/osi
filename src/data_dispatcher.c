@@ -16,17 +16,17 @@
  *
  ******************************************************************************/
 
-#define LOG_TAG "bt_osi_data_dispatcher"
+#define LOG_TAG "osi_data_dispatcher"
 
-#include "osi/include/data_dispatcher.h"
+#include "data_dispatcher.h"
 
 #include <assert.h>
 
-#include "osi/include/allocator.h"
-#include "osi/include/hash_functions.h"
-#include "osi/include/hash_map.h"
-#include "osi/include/osi.h"
-#include "osi/include/log.h"
+#include "allocator.h"
+#include "hash_functions.h"
+#include "hash_map.h"
+#include "osi.h"
+#include "log.h"
 
 #define DEFAULT_TABLE_BUCKETS 10
 

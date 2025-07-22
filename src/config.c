@@ -16,9 +16,9 @@
  *
  ******************************************************************************/
 
-#define LOG_TAG "bt_osi_config"
+#define LOG_TAG "osi_config"
 
-#include "osi/include/config.h"
+#include "config.h"
 
 #include <assert.h>
 #include <ctype.h>
@@ -29,9 +29,9 @@
 #include <unistd.h>
 #include <sys/stat.h>
 
-#include "osi/include/allocator.h"
-#include "osi/include/list.h"
-#include "osi/include/log.h"
+#include "allocator.h"
+#include "list.h"
+#include "log.h"
 
 typedef struct {
   char *key;

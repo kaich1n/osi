@@ -15,12 +15,13 @@
  *  limitations under the License.
  *
  ******************************************************************************/
+#define _GNU_SOURCE
 
-#define LOG_TAG "bt_osi_time"
+#define LOG_TAG "osi_time"
 
 #include <time.h>
 
-#include "osi/include/time.h"
+#include "compat.h"
 
 uint32_t time_get_os_boottime_ms(void) {
   struct timespec timespec;

@@ -20,7 +20,7 @@
 
 #include <pthread.h>
 
-#include "osi/include/mutex.h"
+#include "mutex.h"
 
 static pthread_mutex_t global_lock;
 

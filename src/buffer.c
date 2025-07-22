@@ -16,15 +16,15 @@
  *
  ******************************************************************************/
 
-#define LOG_TAG "bt_osi_buffer"
+#define LOG_TAG "osi_buffer"
 
-#include "osi/include/buffer.h"
+#include "buffer.h"
 
 #include <assert.h>
 #include <stdint.h>
 
-#include "osi/include/allocator.h"
-#include "osi/include/log.h"
+#include "allocator.h"
+#include "log.h"
 
 struct buffer_t {
   buffer_t *root;

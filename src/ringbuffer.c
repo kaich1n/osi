@@ -19,8 +19,8 @@
 #include <assert.h>
 #include <stdlib.h>
 
-#include "osi/include/allocator.h"
-#include "osi/include/ringbuffer.h"
+#include "allocator.h"
+#include "ringbuffer.h"
 
 struct ringbuffer_t {
   size_t total;

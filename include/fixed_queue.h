@@ -21,7 +21,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-#include "osi/include/list.h"
+#include "list.h"
 
 struct fixed_queue_t;
 typedef struct fixed_queue_t fixed_queue_t;

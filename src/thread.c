@@ -16,9 +16,9 @@
  *
  ******************************************************************************/
 
-#define LOG_TAG "bt_osi_thread"
+#define LOG_TAG "osi_thread"
 
-#include "osi/include/thread.h"
+#include "thread.h"
 
 #include <assert.h>
 #include <errno.h>
@@ -29,12 +29,12 @@
 #include <sys/resource.h>
 #include <sys/types.h>
 
-#include "osi/include/allocator.h"
-#include "osi/include/compat.h"
-#include "osi/include/fixed_queue.h"
-#include "osi/include/log.h"
-#include "osi/include/reactor.h"
-#include "osi/include/semaphore.h"
+#include "allocator.h"
+#include "compat.h"
+#include "fixed_queue.h"
+#include "log.h"
+#include "reactor.h"
+#include "semaphore.h"
 
 struct thread_t {
   bool is_joined;

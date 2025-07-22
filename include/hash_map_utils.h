@@ -18,7 +18,7 @@
 
 #pragma once
 
-#include "osi/include/hash_map.h"
+#include "hash_map.h"
 
 // Creates a hash map based on the |params| string containing key and value
 // pairs.  Pairs are expected in the form "key=value" separated by the ';'

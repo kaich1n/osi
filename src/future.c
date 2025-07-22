@@ -16,16 +16,16 @@
  *
  ******************************************************************************/
 
-#define LOG_TAG "bt_osi_future"
+#define LOG_TAG "future"
 
-#include "osi/include/future.h"
+#include "future.h"
 
 #include <assert.h>
 
-#include "osi/include/allocator.h"
-#include "osi/include/log.h"
-#include "osi/include/osi.h"
-#include "osi/include/semaphore.h"
+#include "allocator.h"
+#include "log.h"
+#include "osi.h"
+#include "semaphore.h"
 
 struct future_t {
   bool ready_can_be_called;

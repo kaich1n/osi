@@ -19,6 +19,7 @@
 #pragma once
 
 #include <features.h>
+#include <stdint.h>
 #include <sys/types.h>
 
 #if __GLIBC__
@@ -33,3 +34,13 @@ size_t strlcpy(char *dst, const char *src, size_t siz);
 size_t strlcat(char *dst, const char *src, size_t siz);
 
 #endif
+
+// Get the OS boot time in milliseconds.
+//
+// NOTE: The return value will rollover every 49.7 days,
+// hence it cannot be used for absolute time comparison.
+// Relative time comparison using 32-bits integers such
+// as (t2_u32 - t1_u32 < delta_u32) should work as expected as long
+// as there is no multiple rollover between t2_u32 and t1_u32.
+uint32_t time_get_os_boottime_ms(void);
+

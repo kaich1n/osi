@@ -16,21 +16,21 @@
  *
  ******************************************************************************/
 
-#define LOG_TAG "bt_osi_semaphore"
+#define LOG_TAG "osi_semaphore"
 
-#include "osi/include/semaphore.h"
+#include "semaphore.h"
 
 #include <assert.h>
 #include <errno.h>
 #include <fcntl.h>
-#include <malloc.h>
+// #include <malloc.h>
 #include <string.h>
 #include <sys/eventfd.h>
 #include <unistd.h>
 
-#include "osi/include/allocator.h"
-#include "osi/include/log.h"
-#include "osi/include/osi.h"
+#include "allocator.h"
+#include "log.h"
+#include "osi.h"
 
 #if !defined(EFD_SEMAPHORE)
 #  define EFD_SEMAPHORE (1 << 0)

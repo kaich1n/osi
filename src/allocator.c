@@ -19,8 +19,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "osi/include/allocator.h"
-#include "osi/include/allocation_tracker.h"
+#include "allocator.h"
+#include "allocation_tracker.h"
 
 static const allocator_id_t alloc_allocator_id = 42;
 

@@ -17,16 +17,16 @@
  ******************************************************************************/
 #define LOG_TAG "hash_map_utils"
 
-#include "osi/include/hash_map_utils.h"
+#include "hash_map_utils.h"
 
 #include <assert.h>
 #include <string.h>
 
-#include "osi/include/allocator.h"
-#include "osi/include/hash_functions.h"
-#include "osi/include/hash_map.h"
-#include "osi/include/log.h"
-#include "osi/include/osi.h"
+#include "allocator.h"
+#include "hash_functions.h"
+#include "hash_map.h"
+#include "log.h"
+#include "osi.h"
 
 static bool string_equals(const void *key_a, const void *key_b);
 static bool dump_entry(hash_map_entry_t *entry, UNUSED_ATTR void *context);
