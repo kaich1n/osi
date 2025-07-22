@@ -1,0 +1,20 @@
+#pragma once
+
+int test_config_new_empty(void);
+int test_config_new_no_file(void);
+int test_config_new(void);
+int test_config_free_null(void);
+int test_config_has_section(void);
+int test_config_has_key_in_default_section(void);
+int test_config_has_keys(void);
+int test_config_no_bad_keys(void);
+int test_config_get_int_version(void);
+int test_config_get_int_default(void);
+int test_config_remove_section(void);
+int test_config_remove_section_missing(void);
+int test_config_remove_key(void);
+int test_config_remove_key_missing(void);
+int test_config_section_begin(void);
+int test_config_section_next(void);
+int test_config_section_end(void);
+int test_config_save_basic(void); 

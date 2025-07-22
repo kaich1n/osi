@@ -3,7 +3,7 @@
 #include "AllocationTestHarness.h"
 
 extern "C" {
-#include "osi/include/osi.h"
+#include "osi.h"
 }
 
 class RandTest : public AllocationTestHarness {};

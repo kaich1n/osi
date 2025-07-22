@@ -22,9 +22,9 @@
 #include "AllocationTestHarness.h"
 
 extern "C" {
-#include "osi/include/hash_map.h"
-#include "osi/include/hash_map_utils.h"
-#include "osi/include/allocator.h"
+#include "hash_map.h"
+#include "hash_map_utils.h"
+#include "allocator.h"
 }
 
 class HashMapUtilsTest : public AllocationTestHarness {

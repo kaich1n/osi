@@ -55,3 +55,5 @@ void *allocation_tracker_notify_free(allocator_id_t allocator_id, void *ptr);
 
 // Get the full size for an allocation, taking into account the size of canaries.
 size_t allocation_tracker_resize_for_canary(size_t size);
+
+void allocation_tracker_uninit(void);

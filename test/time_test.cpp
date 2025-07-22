@@ -19,10 +19,7 @@
 #include <gtest/gtest.h>
 
 #include "AllocationTestHarness.h"
-
-extern "C" {
-#include "osi/include/time.h"
-}
+#include "osi.h"
 
 // Generous upper bound: 10 seconds
 static const uint32_t TEST_TIME_DELTA_UPPER_BOUND_MS = 10 * 1000;

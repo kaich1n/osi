@@ -1,0 +1,14 @@
+#pragma once
+
+int test_data_dispatcher_new_free_simple(void);
+int test_data_dispatcher_dispatch_single_to_nowhere(void);
+int test_data_dispatcher_dispatch_single_to_single(void);
+int test_data_dispatcher_dispatch_single_to_multiple(void);
+int test_data_dispatcher_dispatch_single_to_default(void);
+int test_data_dispatcher_dispatch_multiple_to_single(void);
+int test_data_dispatcher_dispatch_multiple_to_multiple(void);
+int test_data_dispatcher_dispatch_single_to_single_reregistered(void);
+int test_data_dispatcher_dispatch_single_to_reregistered_null(void);
+int test_data_dispatcher_dispatch_single_to_default_reregistered_null(void);
+int test_data_dispatcher_dispatch_edge_zero(void);
+int test_data_dispatcher_dispatch_edge_max(void); 

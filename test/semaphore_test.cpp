@@ -6,10 +6,10 @@ extern "C" {
 #include <unistd.h>
 #include <sys/select.h>
 
-#include "osi/include/osi.h"
-#include "osi/include/reactor.h"
-#include "osi/include/semaphore.h"
-#include "osi/include/thread.h"
+#include "osi.h"
+#include "reactor.h"
+#include "semaphore.h"
+#include "thread.h"
 }
 
 struct SemaphoreTestSequenceHelper {

@@ -33,8 +33,6 @@ struct future_t {
   void *result;
 };
 
-static void future_free(future_t *future);
-
 future_t *future_new(void) {
   future_t *ret = osi_calloc(sizeof(future_t));
 
@@ -80,7 +78,7 @@ void *future_await(future_t *future) {
   return result;
 }
 
-static void future_free(future_t *future) {
+void future_free(future_t *future) {
   if (!future)
     return;
 

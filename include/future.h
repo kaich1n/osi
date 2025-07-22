@@ -39,3 +39,5 @@ void future_ready(future_t *future, void *value);
 // Waits for the |future| to be ready. Returns the value set in |future_ready|.
 // Frees the future before return. |future| may not be NULL.
 void *future_await(future_t *async_result);
+
+void future_free(future_t *future);
