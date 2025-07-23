@@ -39,6 +39,8 @@ SET(SOURCES
 include_directories(include)
 
 ADD_LIBRARY(ct SHARED ${SOURCES})
+ADD_LIBRARY(ct-static STATIC ${SOURCES})
+SET_TARGET_PROPERTIES(ct-static PROPERTIES OUTPUT_NAME ct)
 target_link_libraries(ct PRIVATE Threads::Threads rt)
 
 FILE(GLOB headers include/*.h)
