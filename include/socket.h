@@ -45,9 +45,12 @@ socket_t *socket_new_from_fd(int fd);
 void socket_free(socket_t *socket);
 
 // Puts |socket| in listening mode for incoming TCP connections on the specified
-// |port| and the loopback IPv4 address. Returns true on success, false on
-// failure (e.g. |port| is bound by another socket). |socket| may not be NULL.
-bool socket_listen(const socket_t *socket, port_t port);
+// |port| and the specific IPv4 address (if NULL use the loopback address).
+// Returns true on success, false on failure (e.g. |port| is bound by another socket).
+// |socket| may not be NULL.
+bool socket_listen(const socket_t *socket, const char *host, port_t port);
+
+socket_t *socket_connect(const char *host, port_t port);
 
 // Blocks on a listening socket, |socket|, until a client connects to it. Returns
 // a connected socket on success, NULL on failure. The returned object must be

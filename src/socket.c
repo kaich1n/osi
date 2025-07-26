@@ -23,6 +23,7 @@
 #include <asm/ioctls.h>
 #include <assert.h>
 #include <errno.h>
+#include <arpa/inet.h>
 #include <netinet/in.h>
 #include <string.h>
 #include <sys/ioctl.h>
@@ -35,7 +36,8 @@
 #include "reactor.h"
 
 // The IPv4 loopback address: 127.0.0.1
-static const in_addr_t LOCALHOST_ = 0x7f000001;
+// static const in_addr_t LOCALHOST_ = 0x7f000001;
+static const char *LOCALHOST_ = "127.0.0.1";
 
 struct socket_t {
   int fd;
@@ -90,13 +92,23 @@ void socket_free(socket_t *socket) {
   osi_free(socket);
 }
 
-bool socket_listen(const socket_t *socket, port_t port) {
+bool socket_listen(const socket_t *socket, const char *host, port_t port) {
   assert(socket != NULL);
 
   struct sockaddr_in addr;
+  memset(&addr, 0, sizeof(addr));
+
+  if (!host)
+    host = LOCALHOST_;
+
   addr.sin_family = AF_INET;
-  addr.sin_addr.s_addr = htonl(LOCALHOST_);
   addr.sin_port = htons(port);
+
+  if (inet_pton(AF_INET, host, &addr.sin_addr) != 1) {
+    LOG_ERROR(LOG_TAG, "%s inet_pton unable to parse host %s: %s", __func__, host, strerror(errno));
+    return false;
+  }
+
   if (bind(socket->fd, (struct sockaddr *)&addr, sizeof(addr)) == -1) {
     LOG_ERROR(LOG_TAG, "%s unable to bind socket to port %u: %s", __func__, port, strerror(errno));
     return false;
@@ -108,6 +120,45 @@ bool socket_listen(const socket_t *socket, port_t port) {
   }
 
   return true;
+}
+
+socket_t *socket_connect(const char *host, port_t port) {
+  struct sockaddr_in addr;
+  memset(&addr, 0, sizeof(addr));
+
+  if (!host)
+    host = LOCALHOST_;
+
+  addr.sin_family = AF_INET;
+  addr.sin_port = htons(port);
+
+  if (inet_pton(AF_INET, host, &addr.sin_addr) != 1) {
+    LOG_ERROR(LOG_TAG, "%s inet_pton unable to parse host %s: %s", __func__, host, strerror(errno));
+    return NULL;
+  }
+
+  socket_t *ret = (socket_t *)osi_calloc(sizeof(socket_t));
+
+  ret->fd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+  if (ret->fd == INVALID_FD) {
+    LOG_ERROR(LOG_TAG, "%s unable to create socket: %s", __func__, strerror(errno));
+    goto error;
+  }
+
+  if (connect(ret->fd, (struct sockaddr*)&addr, sizeof(addr))) {
+    if (errno != EINPROGRESS) {
+      LOG_ERROR(LOG_TAG, "%s unable to connect socket to %s:%d: %s", __func__, host, port, strerror(errno));
+      goto error;
+    }
+  }
+
+  return ret;
+
+error:;
+  if (ret)
+    close(ret->fd);
+  osi_free(ret);
+  return NULL;
 }
 
 socket_t *socket_accept(const socket_t *socket) {
