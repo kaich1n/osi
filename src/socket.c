@@ -34,6 +34,7 @@
 #include "log.h"
 #include "osi.h"
 #include "reactor.h"
+#include "socket_utils/sockets.h"
 
 // The IPv4 loopback address: 127.0.0.1
 // static const in_addr_t LOCALHOST_ = 0x7f000001;
@@ -159,6 +160,28 @@ error:;
     close(ret->fd);
   osi_free(ret);
   return NULL;
+}
+
+socket_t *socket_listen_local(const char *path)
+{
+  int fd = osi_socket_local_server(path, ANDROID_SOCKET_NAMESPACE_ABSTRACT, SOCK_STREAM);
+  if (fd == INVALID_FD) {
+    LOG_ERROR(LOG_TAG, "%s unable to create socket: %s", __func__, strerror(errno));
+    return NULL;
+  }
+
+  return socket_new_from_fd(fd);
+}
+
+socket_t *socket_connect_local(const char *path)
+{
+  int fd = osi_socket_local_client(path, ANDROID_SOCKET_NAMESPACE_ABSTRACT, SOCK_STREAM);
+  if (fd == INVALID_FD) {
+    LOG_ERROR(LOG_TAG, "%s unable to create socket: %s", __func__, strerror(errno));
+    return NULL;
+  }
+
+  return socket_new_from_fd(fd);
 }
 
 socket_t *socket_accept(const socket_t *socket) {

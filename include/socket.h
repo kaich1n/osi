@@ -52,6 +52,10 @@ bool socket_listen(const socket_t *socket, const char *host, port_t port);
 
 socket_t *socket_connect(const char *host, port_t port);
 
+socket_t *socket_listen_local(const char *path);
+
+socket_t *socket_connect_local(const char *path);
+
 // Blocks on a listening socket, |socket|, until a client connects to it. Returns
 // a connected socket on success, NULL on failure. The returned object must be
 // freed by calling |socket_free|. |socket| may not be NULL.
